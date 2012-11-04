@@ -34,7 +34,7 @@ app.all('/*', function(req, res, next) {
 });
 
 app.get('/', function(req, res){
-  res.send('test');
+  res.send('Welcome to corss.io');
 });
 
 app.get('/json/*', function(req, res){
