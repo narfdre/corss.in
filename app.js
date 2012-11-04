@@ -39,13 +39,11 @@ app.get('/', function(req, res){
 
 app.get('/json/*', function(req, res){
   rsj.r2j(req.params[0],function(json) {
-    console.log(json);
     res.send(json);
   });
 });
 
 app.get('/xml/*', function(req, res){
-  console.log(req.params[0]);
   http.get(req.params[0], function(response) {
     response.on('data', function (chunk) {
       res.send(chunk);
