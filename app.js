@@ -1,12 +1,7 @@
-
-/**
- * Module dependencies.
- */
-
 var express   = require('express'),
     http      = require('http'),
     path      = require('path'),
-    rsj       = require('./lib/node-rsj');
+    FeedParser = require('feedparser');
 
 var app = express();
 
@@ -30,7 +25,7 @@ app.configure(function(){
     else {
       next();
     }
-});
+  });
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -44,7 +39,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/json/*', function(req, res){
-  rsj.r2j(req.params[0],function(json) {
+  r2j(req.params[0],function(json) {
     res.send(json);
   });
 });
@@ -62,3 +57,12 @@ app.get('/xml/*', function(req, res){
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+
+function r2j (uri,cb){
+  var parser = new FeedParser();
+  parser.parseUrl(uri,function(err, meta, articles){
+      if(err) return console.error(err);
+      cb(JSON.stringify(articles));
+  });
+}
