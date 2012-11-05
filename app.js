@@ -6,7 +6,7 @@
 var express   = require('express'),
     http      = require('http'),
     path      = require('path'),
-    rsj       = require('rsj');
+    rsj       = require('./lib/node-rsj/rsj.js');
 
 var app = express();
 
@@ -40,10 +40,11 @@ app.configure('development', function(){
 });
 
 app.get('/', function(req, res){
-  res.send('Welcome to corss.io');
+  res.send('Welcome to corss');
 });
 
 app.get('/json/*', function(req, res){
+  console.log(req.params[0]);
   rsj.r2j(req.params[0],function(json) {
     res.send(json);
   });
