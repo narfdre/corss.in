@@ -10,8 +10,10 @@
     "npm":  "1.1.x"
   },
   "dependencies": {
-    "express" : "3.0.1",
-    "jade"    : "*",
-    "rsj"  : "0.0.1"
+    "express"     : "3.0.1",
+    "jade"        : "*",
+    "request"     : ">= 1.2.0",
+    "sax"         : ">=0.4.0",
+    "feedparser"  : ">=0.9.9"
   }
 }
