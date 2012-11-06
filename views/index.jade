@@ -1,7 +1,7 @@
 doctype 5
 html(ng-app)
 	head
-		title CORSS
+		title CORSS - corss.in
 		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap.no-responsive.no-icons.min.css')
 		script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js')
 	body
@@ -21,7 +21,7 @@ html(ng-app)
 					p This service allows you to request any RSS feed you would like in either JSON or XML format straight from your front-end code. There is no need for a backend when using CORSS.
 			hr
 			h2 API
-			code http://corrs.herokuapp.com/:format/:url
+			code http://corrs.in/:format/:url
 			hr
 			h2 Try It
 			p Select the format and enter the url for the RSS or ATOM feed.
@@ -30,4 +30,4 @@ html(ng-app)
 					option(value='json') json
 					option(value='xml') xml
 				input(type='text', placeholder='url', ng-model="url").input-xxlarge
-			h3 http://corss.herokuapp.com/{{format}}/{{url}}
+			h3 http://corss.in/{{format}}/{{url}}
