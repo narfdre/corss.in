@@ -39,13 +39,13 @@ app.get('/', function(req, res){
   //res.send('Welcome to corss');
 });
 
-app.get('/json/*', function(req, res){
+app.get('/json/at/*', function(req, res){
   r2j(req.params[0],function(json) {
     res.send(json);
   });
 });
 
-app.get('/xml/*', function(req, res){
+app.get('/xml/at/*', function(req, res){
   http.get(req.params[0], function(response) {
     response.on('data', function (chunk) {
       res.send(chunk);

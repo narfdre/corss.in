@@ -21,7 +21,8 @@ html(ng-app)
 					p This service allows you to request any RSS feed you would like in either JSON or XML format straight from your front-end code. There is no need for a backend when using CORSS.
 			hr
 			h2 API
-			code http://corrs.in/:format/:url
+			p Tell corss what format you want the feed <b>in</b> and where it is <b>at</b>.
+			code http://corrs.in/:format/at/:url
 			hr
 			h2 Try It
 			p Select the format and enter the url for the RSS or ATOM feed.
@@ -30,4 +31,4 @@ html(ng-app)
 					option(value='json') json
 					option(value='xml') xml
 				input(type='text', placeholder='url', ng-model="url").input-xxlarge
-			h3 http://corss.in/{{format}}/{{url}}
+			h3 http://corss.in/{{format}}/at/{{url}}
