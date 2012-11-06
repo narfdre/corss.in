@@ -35,7 +35,8 @@ app.configure('development', function(){
 });
 
 app.get('/', function(req, res){
-  res.send('Welcome to corss');
+  res.render('index');
+  //res.send('Welcome to corss');
 });
 
 app.get('/json/*', function(req, res){

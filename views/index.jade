@@ -1,5 +1,33 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype 5
+html(ng-app)
+	head
+		title CORSS
+		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap.no-responsive.no-icons.min.css')
+		script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js')
+	body
+		div.container
+			h1 CORSS
+			h4 Cross-Origin Real Simple Syndication
+			hr
+			div.row
+				div.span4
+					h2 CORS
+					p Cross-Origin Resource Sharing is a solution for Javascript's same origin policy problem. This lets you (if the server allows) send an ajax call to a server on a different domain.
+				div.span4
+					h2 RSS
+					p Most if not all sites now-a-days have a form of RSS which allows you to pull the content from a site without having to visit that site. 
+				div.span4
+					h2 CORSS
+					p This service allows you to request any RSS feed you would like in either JSON or XML format straight from your front-end code. There is no need for a backend when using CORSS.
+			hr
+			h2 API
+			code http://corrs.herokuapp.com/:format/:url
+			hr
+			h2 Try It
+			p Select the format and enter the url for the RSS or ATOM feed.
+			form.form-inline
+				select(ng-model='format')
+					option(value='json') json
+					option(value='xml') xml
+				input(type='text', placeholder='url', ng-model="url").input-xxlarge
+			h3 http://corss.herokuapp.com/{{format}}/{{url}}
