@@ -12,8 +12,6 @@
   "dependencies": {
     "express"     : "3.0.1",
     "jade"        : "*",
-    "request"     : ">= 1.2.0",
-    "sax"         : ">=0.4.0",
-    "feedparser"  : ">=0.9.9"
+    "feedr"      : "=2.3.0"
   }
 }

@@ -1,9 +1,10 @@
 var express   = require('express'),
     http      = require('http'),
     path      = require('path'),
-    FeedParser = require('feedparser');
+    Feedr    = require('feedr').Feedr;
 
-var app = express();
+var app = express(),
+    feedr = new Feedr();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -36,19 +37,26 @@ app.configure('development', function(){
 
 app.get('/', function(req, res){
   res.render('index');
-  //res.send('Welcome to corss');
 });
 
 app.get('/json/at/*', function(req, res){
-  r2j(req.params[0],function(json) {
-    res.send(json);
+  var url = cleanUrl(req.params[0], req.query);
+  feedr.readFeed(url, function(err, result){
+    if(err)
+      res.send(err);
+    else
+      res.send(result);
   });
 });
 
 app.get('/xml/at/*', function(req, res){
-  http.get(req.params[0], function(response) {
+  var url = cleanUrl(req.params[0], req.query);
+  var xml = "";
+  http.get(url, function(response) {
     response.on('data', function (chunk) {
-      res.send(chunk);
+      xml += chunk;
+    }).on('end', function(){
+      res.send(xml);
     });
   }).on('error', function(e) {
     res.send("Got error: " + e.message);
@@ -59,11 +67,14 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
-
-function r2j (uri,cb){
-  var parser = new FeedParser();
-  parser.parseUrl(uri,function(err, meta, articles){
-      if(err) return console.error(err);
-      cb(JSON.stringify(articles));
-  });
+function cleanUrl(uri, query){
+  var url = uri,
+      q = "";
+  for(var i in query){
+    q += i + '=' + query[i];
+  }
+  if(q !== ""){
+    url += "?" + q;
+  }
+  return url;
 }
