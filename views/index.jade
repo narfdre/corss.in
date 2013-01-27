@@ -2,23 +2,28 @@ doctype 5
 html(ng-app)
 	head
 		title CORSS - corss.in
-		link(rel='stylesheet', href='//bootswatch.com/united/bootstrap.min.css')
+		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css')
+		link(rel='stylesheet', href='stylesheets/style.css')
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js')
 	body
+		a(href="https://github.com/narfdre/corss.in")
+			img(src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png", alt="Fork me on GitHub").github-ribbon
+		div.navbar.navbar-fixed-top.navbar-inverse
+			div.navbar-inner
+				div.container
+					a.brand(href="/") CORSS
 		div.container
-			h1 CORSS
-			h4 Cross-Origin Real Simple Syndication
-			hr
+			div.hero-unit
+				h1.icon CORSS
+				h4 Cross-Origin Real Simple Syndication
+				p CORSS allows you to request any RSS feed you would like in either JSON or XML format straight from your front-end code. There is no need for a backend when using CORSS.
 			div.row
-				div.span4
+				div.span6
 					h2 CORS
 					p Cross-Origin Resource Sharing is a solution for Javascript's same origin policy problem. This lets you (if the server allows) send an ajax call to a server on a different domain.
-				div.span4
+				div.span6
 					h2 RSS
 					p Most if not all sites now-a-days have a form of RSS which allows you to pull the content from a site without having to visit that site. 
-				div.span4
-					h2 CORSS
-					p This service allows you to request any RSS feed you would like in either JSON or XML format straight from your front-end code. There is no need for a backend when using CORSS.
 			hr
 			h2 API
 			p Tell corss what format you want the feed <b>in</b> and where it is <b>at</b>.
@@ -27,8 +32,16 @@ html(ng-app)
 			h2 Try It
 			p Select the format and enter the url for the RSS or ATOM feed.
 			form.form-inline
-				select(ng-model='format')
+				select(ng-model='format').span2
 					option(value='json') json
 					option(value='xml') xml
-				input(type='text', placeholder='url', ng-model="url").input-xxlarge
+				input(type='text', placeholder='http://www.url.to/your/rss/feed', ng-model="url").span10
 			h3 http://corss.in/{{format}}/at/{{url}}
+			hr
+			h2 Road Map
+			p Feel free to fork the repo and submit your own format if you need something other than JSON and XML
+			hr
+		div.footer
+			p Built and maintained by 
+				a(href="https://twitter.com/narfdre") @narfdre
+		| <script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37965439-1']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
